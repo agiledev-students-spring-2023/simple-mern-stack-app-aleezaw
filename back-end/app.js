@@ -78,5 +78,22 @@ app.post('/messages/save', async (req, res) => {
   }
 })
 
+app.get('/about', async (req, res) => {
+  try {
+    res.json({
+      txt: `My name is Aleeza Wolff and I am a Senior in CAS majoring in Computer Science. I cannot believe this is my last semester in NYU, I feel like it flew by even more than it should have become of COVID and being online for a year and a half of college. I am excited for this class and all of the ways in which it will help prepare me for the technology world outside of school.
+      In my free time, I like working out, reading, and spending time with my family and friends. I also love coffee, ice cream, and sunsets, so I try to enjoy as much of them as possible!`,
+    
+      img: "/Users/aleezawolff/Documents/GitHub/simple-mern-stack-app-aleezaw/front-end/src/about_pic.jpeg"
+    })
+  } catch (err) {
+    console.error(err)
+    res.status(400).json({
+      error: err,
+      status: 'failed to retrieve about me information',
+    })
+  }
+})
+
 // export the express app we created to make it available to other modules
 module.exports = app // CommonJS export style!
